@@ -1,41 +1,68 @@
 # Euclidius
 
-Euclidius is a neural network which performs hate speech detection that when textual content is input, analyses the sentiment of the sentences and determines if the content is considered hateful, offensive or is acceptable. The out is binary meaning the text is determined to be either unacceptable (contains hate/offensive content) or acceptable.
+Euclidius is a neural network-based application that performs hate speech detection. When textual content is input, it analyses the sentiment of the sentences and determines if the content is considered hateful, offensive, or acceptable. The output is binary, meaning the text is determined to be either unacceptable (contains hate/offensive content) or acceptable.
 
-The dataset used for this module was obtained from Kaggle and had the Creative Commons type of public license meaning the provided data is freely available for use in the public domain within the set parameters of the law of course. This dataset is from a paper on Automated Hate Speech Detection by Davidson et al, (2017).
+The model leverages advancements in natural language processing to evaluate text, using a structured approach that ensures high accuracy and performance. Below is a simple example of how you might interact with the API using Python:
 
-This dataset uses data obtained from Twitter and was used to study hate speech identification. The texts are categorized as, hateful speech, language of offensive nature or acceptable language. It should be noted that due to the nature of the study this dataset contains explicit content such as vulgar language and content generally considered offensive.
+```python
+import requests
 
-### Set up
-
-The pre-requisites to run this module on a machine is to have Python and Anaconda installed. Any version between 3.6 and 3.9 is acceptable. The module was developed and run on an Anaconda environment. The environment and all associated Python packages required for this module has been saved to an environment.yaml file and the module should be ready to run once the environment is set up correctly.
-
-After install Python and Anaconda, to set up the environment run the following command.
-
-```bash
-cd ai && conda env create --file environment.yaml
+response = requests.post('http://localhost:5000/detect', json={"text": "example text"})
+print(response.json())
 ```
 
-This should set up the environment and install all the required packages.
+### Dataset
 
-Once the environment has been set up to run the API use the following command.
+The dataset used for this module was sourced from Kaggle under a Creative Commons type of public license, which allows for free use within the legal constraints. This dataset originates from a paper on Automated Hate Speech Detection by Davidson et al., (2017). The dataset comprises texts obtained from Twitter, categorized as hateful speech, offensive language, or acceptable language. Due to the nature of the study, this dataset includes explicit content, including vulgar language and generally offensive content. More details about the dataset and its usage can be found [here](https://www.kaggle.com/).
+
+### Set Up
+
+#### Prerequisites
+
+To run this module, ensure that Python (versions 3.6 to 3.9) and Anaconda are installed on your machine. The project has been developed and tested in an Anaconda environment.
+
+#### Environment Setup
+
+Navigate to the project directory and set up the required environment with the following commands:
 
 ```bash
-conda activate torchenv && flask run
+cd ai
+conda env create --file environment.yaml
 ```
 
-Please make sure to run all the above given command within the ai directory.
+This will install all necessary packages as specified in `environment.yaml`.
 
-Once the command is executed successfully the following output should be received. This indicates that the AI and its wrapper API is up and running, ready to be used.
+#### Running the API
 
-## Contributing
+Activate the environment and start the application with:
 
-Thank you for considering contributing to Euclidius! You can read the contribution guide [here](.github/CONTRIBUTING.md).
+```bash
+conda activate torchenv
+flask run
+```
 
-## Security Vulnerabilities
+You should see the following output, indicating that the AI and its wrapper API are up and running:
 
-Please review [our security policy](https://github.com/Thavarshan/euclidius/security/policy) on how to report security vulnerabilities.
+```
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```
 
-## License
+### Contributing
+
+Thank you for considering contributing to Euclidius! If you're interested in helping improve the project, please read the [contribution guide](.github/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us. Here are a few areas where you can help:
+
+- Adding new features or examples
+- Improving the documentation or README
+- Reporting or fixing bugs
+
+### Security Vulnerabilities
+
+If you discover a security vulnerability within Euclidius, please send an e-mail to the project team via [our security policy](https://github.com/Thavarshan/euclidius/security/policy). All security vulnerabilities will be promptly addressed.
+
+### License
 
 Euclidius is open-sourced software licensed under the [MIT license](LICENSE).
+
+### Acknowledgments
+
+Special thanks to the Kaggle community for providing the dataset and to Davidson et al. for their foundational work in hate speech detection.
